@@ -1,6 +1,6 @@
 # FilePreview
 
-Generate preview images for filetypes.
+Generate preview images for file types.
 
 ## Installation with Composer
 
