@@ -1,0 +1,25 @@
+{
+    "name": "mykemeynell/filepreview",
+    "description": "Library for generating file previews.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Myke Meynell",
+            "email": "iam@mykemeynell.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "mykemeynell\\FilePreview\\": "src/"
+        }
+    },
+    "require": {
+        "nesbot/carbon": "^2.30",
+        "symfony/http-foundation": "^5.0",
+        "phpoffice/phpword": "^0.17.0",
+        "tecnickcom/tcpdf": "^6.3"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.1"
+    }
+}
