@@ -153,7 +153,7 @@ class FilePreview
         }
 
         if(array_key_exists($mime, $this->handlers)) {
-            return call_user_func_array($this->handlers[$mime], [$this->file]);
+            return call_user_func_array($this->handlers[$mime], [$this, $this->file]);
         }
 
         if($this->file->isPdf()) {
