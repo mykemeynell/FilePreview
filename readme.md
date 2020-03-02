@@ -38,7 +38,14 @@ relating to the given file path.
 
 ```php
 FilePreview::addHandler('application/pdf', function ($preview, $file) {
-    // Custom handler code.
+    /** @var \mykemeynell\FilePreview\FilePreview $preview */
+    /** @var \mykemeynell\FilePreview\FileSystem\File $file */
+
+    // $content = ...=
+
+    $preview->setContentTypeHeader('image/jpg');
+    $preview->setContent($content);
+    
     return $preview;
 });
 ```

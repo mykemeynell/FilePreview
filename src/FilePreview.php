@@ -204,8 +204,8 @@ class FilePreview
         $imagick = new Imagick($this->file->getPath());
         $imagick->setImageFormat('jpg');
 
-        $this->output['header'] = 'image/jpg';
-        $this->output['content'] = $imagick;
+        $this->setContentTypeHeader('image/jpg');
+        $this->setContent($imagick);
 
         return $this;
     }
@@ -220,8 +220,8 @@ class FilePreview
         $imagick = new Imagick($this->file->getPath() . '[0]');
         $imagick->setImageFormat('jpg');
 
-        $this->output['header'] = 'image/jpg';
-        $this->output['content'] = $imagick;
+        $this->setContentTypeHeader('image/jpg');
+        $this->setContent($imagick);
 
         return $this;
     }
@@ -251,6 +251,35 @@ class FilePreview
         return ! empty($this->output['header'])
             && ! empty($this->output['content']);
     }
+
+    /**
+     * Set the Content-Type header.
+     *
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setContentTypeHeader(string $value)
+    {
+        $this->output['header'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Set the content of the output.
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setContent($value)
+    {
+        $this->output['content'] = $value;
+
+        return $this;
+    }
+
 
     /**
      * Test if the file MIME type is allowed to generate file previews.
