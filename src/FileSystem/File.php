@@ -34,13 +34,37 @@ final class File
      */
     function __construct(string $path)
     {
-        if (!file_exists($path)) {
-            throw new \Exception("Could not load file [{$path}] as it doesn't exist.");
+        $this->path = $path;
+
+        if(file_exists($path)) {
+            $this->attributes = $this->stats();
+        }
+    }
+
+    /**
+     * Read the contents of a file.
+     *
+     * @return false|string
+     */
+    public function read()
+    {
+        return file_get_contents($this->path);
+    }
+
+    /**
+     * Write new data into the file.
+     *
+     * @param $data
+     *
+     * @return false|int
+     */
+    public function write($data)
+    {
+        if($write = file_put_contents($this->path, $data)) {
+            $this->attributes = $this->stats();
         }
 
-        $this->path = $path;
-        $this->attributes = $this->stats();
-
+        return $write;
     }
 
     /**
